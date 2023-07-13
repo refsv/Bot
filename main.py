@@ -50,7 +50,7 @@ Base.metadata.create_all(engine)  # Создание таблиц в базе д
 Session = sessionmaker(bind=engine)
 session = Session()
 
-bot_active = True  # Флаг активности бота, изначально установлен в True
+bot_active = False  # Флаг активности бота, изначально установлен в True
 
 
 def initialize_stats():
@@ -91,6 +91,7 @@ async def hello(message: types.Message):
 
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     buttons = [
+        KeyboardButton(text='/start'),
         KeyboardButton(text='/reset'),
         KeyboardButton(text='/end'),
         KeyboardButton(text='/stats'),
