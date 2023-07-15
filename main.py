@@ -50,8 +50,7 @@ Base.metadata.create_all(engine)  # Создание таблиц в базе д
 Session = sessionmaker(bind=engine)
 session = Session()
 
-bot_active = False  # Флаг активности бота, изначально установлен в True
-
+bot_active = False
 
 def initialize_stats():
     stats = session.query(Stats).first()
@@ -186,7 +185,7 @@ async def handle_text(message: types.Message):
     response = openai.Completion.create(
         engine='text-davinci-003',
         prompt=prompt_with_user_message,
-        max_tokens=150,
+        max_tokens=300,
         temperature=0.7,
         top_p=1.0,
         frequency_penalty=0.0,
